@@ -6,6 +6,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 import authRouter from "./routes/auth.js"
+import menuRouter from "./routes/menus.js"
 
 const port = process.env.PORT;
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/auth", authRouter);
+app.use("/menus", menuRouter)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
