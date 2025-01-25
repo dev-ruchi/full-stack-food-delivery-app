@@ -13,5 +13,10 @@ export function findById(id) {
   return Menu.findById(id);
 } 
 
+export function update(id, data) {
+  return Menu.findByIdAndUpdate(id, data, { new: true });
+} 
+
+
 
 
