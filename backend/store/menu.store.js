@@ -18,5 +18,7 @@ export function update(id, data) {
 } 
 
 
-
+export function deleteById(id) {
+  return Menu.findByIdAndDelete(id);
+}
 
