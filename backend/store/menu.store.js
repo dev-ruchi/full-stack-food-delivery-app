@@ -9,3 +9,9 @@ export function findAll() {
 }
 
 
+export function findById(id) {
+  return Menu.findById(id);
+} 
+
+
+
