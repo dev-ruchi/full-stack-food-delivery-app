@@ -19,21 +19,21 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-// // GET /menuItems/:id -> get a Item by id
+// // GET /menuItems/:id -> get a menu item by id
 router.get("/:id", (req, res) => {
   findById(req.params.id)
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json(err));
 });
 
-// // PUT /menuItems/:id -> update a menu by id
+// // PUT /menuItems/:id -> update a menu item by id
 router.put("/:id", (req, res) => {
   update(req.params.id, req.body)
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json(err));
 });
 
-// // DELETE /menuItems/:id -> delete a menu by id
+// // DELETE /menuItems/:id -> delete a menu item by id
 router.delete("/:id", (req, res) => {
   deleteById(req.params.id)
     .then((data) => res.json(data))

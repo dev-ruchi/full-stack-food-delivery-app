@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 
 import authRouter from "./routes/auth.js"
 import menuRouter from "./routes/menus.js"
+import orderRouter from "./routes/orders.js"
 
 const port = process.env.PORT;
 
@@ -24,7 +25,8 @@ app.get('/', (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/menu", menuRouter)
+app.use("/menu", menuRouter);
+app.use("/order", orderRouter)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

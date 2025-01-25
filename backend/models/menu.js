@@ -4,24 +4,24 @@ const menuSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true, 
+    trim: true,
   },
   category: {
     type: String,
-    enum: ['Appetizers', 'MainCourse', 'Desserts'], 
+    enum: ["Appetizers", "MainCourse", "Desserts"],
     required: true,
   },
   price: {
     type: Number,
     required: true,
-    min: 0, 
+    min: 0,
   },
   availability: {
     type: Boolean,
-    default: true, 
+    default: true,
   },
 });
 
-const Menu = mongoose.model('Menu', menuSchema);
+const Menu = mongoose.models.Menu || mongoose.model("Menu", menuSchema);
 
 export default Menu;
