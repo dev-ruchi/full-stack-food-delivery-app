@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/menus", menuRouter)
+app.use("/menu", menuRouter)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
