@@ -1,11 +1,11 @@
 import express from "express";
-import Order from "../models/order.js";
 import Menu from "../models/menu.js";
-
 import { findAll, create } from "../store/order.store.js";
+import { auth } from "../routes/middlewares/auth.middleware.js";
+
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     const { userId, items } = req.body;
 
@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
     }, 0);
 
     const savedOrder = await create({
-      userId,
+      userId: req.userId,
       items,
       totalAmount,
     });

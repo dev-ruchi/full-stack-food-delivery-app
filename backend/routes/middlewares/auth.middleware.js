@@ -1,26 +1,25 @@
 import jwt from "jsonwebtoken";
 
 export function auth(req, res, next) {
-  console.log("Authenicating");
-
   const { authorization } = req.headers;
 
   if (typeof authorization !== "string") {
     console.log("Token not found");
     res.status(401).json({ message: "Unauthenticated" });
+    return;
   }
-
-  // "Bearer fkfndksjnfsvnkdvsnv"
 
   const [bearer, token] = authorization.split(" ");
 
   if (bearer !== "Bearer") {
     res.status(401).json({ message: "Unauthenticated" });
+    return;
   }
 
   if (!token) {
     console.log("Invalid token");
     res.status(401).json({ message: "Unauthenticated" });
+    return;
   }
 
   try {
