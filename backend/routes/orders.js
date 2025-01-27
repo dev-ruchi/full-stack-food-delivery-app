@@ -1,41 +1,20 @@
 import express from "express";
-import Menu from "../models/menu.js";
-import { findAll, create } from "../store/order.store.js";
+import { findAll } from "../store/order.store.js";
 import { auth } from "../routes/middlewares/auth.middleware.js";
+import { order } from "../services/order.service.js";
+import { sendValidationErrorResponse } from "../errorHandler.js";
 
 const router = express.Router();
 
 router.post("/", auth, async (req, res) => {
   try {
-    const { items } = req.body;
-
-    // Validate menu items and calculate total
-    const menuItemIds = items.map((item) => item.menuItemId);
-    const menuItems = await Menu.find({ _id: { $in: menuItemIds } });
-
-    const totalAmount = menuItems.reduce((total, menuItem) => {
-      const itemQuantity = items.find(
-        (i) => i.menuItemId === menuItem._id.toString()
-      ).quantity;
-      return total + menuItem.price * itemQuantity;
-    }, 0);
-
-    const savedOrder = await create({
-      userId: req.userId,
-      items,
-      totalAmount,
-    });
-
+    const savedOrder = await order(req.body, req.userId);
     res.status(201).json(savedOrder);
   } catch (error) {
-    res.status(400).json({
-      message: "Order creation failed",
-      error: error.message,
-    });
+    sendValidationErrorResponse(res, error);
   }
 });
 
-// GET /orders -> list all orders
 router.get("/", (req, res) => {
   findAll(req.body)
     .then((data) => res.json(data))
