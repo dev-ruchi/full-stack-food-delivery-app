@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/", auth, async (req, res) => {
   try {
-    const { userId, items } = req.body;
+    const { items } = req.body;
 
     // Validate menu items and calculate total
     const menuItemIds = items.map((item) => item.menuItemId);
