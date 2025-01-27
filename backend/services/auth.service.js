@@ -23,7 +23,7 @@ export async function register(data) {
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  
+
   const newUser = new User({
     username,
     password: hashedPassword,
@@ -51,12 +51,13 @@ export async function login(data) {
   const user = await User.findOne({ username });
 
   if (!user) {
-    throw new Error("User not found");
+    throwErrorWithStatus(400, "Invalid credentials");
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
+
   if (!isPasswordValid) {
-    throw new Error("Invalid credentials");
+    throwErrorWithStatus(400, "Invalid credentials");
   }
 
   const token = generateToken({ userId: user._id, username: user.username });
