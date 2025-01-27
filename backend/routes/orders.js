@@ -15,10 +15,14 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-router.get("/", (req, res) => {
-  findAll(req.body)
-    .then((data) => res.json(data))
-    .catch((err) => sendValidationErrorResponse(res, err));
+router.get("/", auth, async (req, res) => {
+  try {
+    const data = await findAll(req.body);
+    res.status(200).json(data);
+  } catch (error) {
+    sendValidationErrorResponse(res, error);
+  }
 });
 
 export default router;
+

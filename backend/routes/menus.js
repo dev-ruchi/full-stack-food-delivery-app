@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     const data = await service.findAll(req.body);
     res.status(200).json(data);
   } catch (error) {
-    sendErrorResponse(res, error);
+    sendValidationErrorResponse(res, error);
   }
 });
 
@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
     const data = await service.findById(req.params.id);
     res.status(200).json(data);
   } catch (error) {
-    sendErrorResponse(res, error);
+    sendValidationErrorResponse(res, error);
   }
 });
 
@@ -37,7 +37,7 @@ router.put("/:id", async (req, res) => {
     const data = await service.update(req.params.id, req.body);
     res.status(200).json(data);
   } catch (error) {
-    sendErrorResponse(res, error);
+    sendValidationErrorResponse(res, error);
   }
 });
 
@@ -46,7 +46,7 @@ router.delete("/:id", async (req, res) => {
     const data = await service.deleteById(req.params.id);
     res.status(200).json(data);
   } catch (error) {
-    sendErrorResponse(res, error);
+    sendValidationErrorResponse(res, error);
   }
 });
 

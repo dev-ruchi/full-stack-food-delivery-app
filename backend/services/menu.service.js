@@ -19,3 +19,4 @@ export async function update(id, data) {
 export async function deleteById(id) {
   return store.deleteById(id);
 }
+

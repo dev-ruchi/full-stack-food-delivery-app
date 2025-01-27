@@ -23,3 +23,7 @@ export async function order(data, userId) {
 
   return savedOrder;
 }
+
+export async function findAll() {
+  return store.findAll();
+} 
