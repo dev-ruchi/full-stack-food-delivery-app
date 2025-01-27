@@ -18,7 +18,7 @@ router.post("/", auth, async (req, res) => {
 router.get("/", (req, res) => {
   findAll(req.body)
     .then((data) => res.json(data))
-    .catch((err) => res.status(400).json(err));
+    .catch((err) => sendValidationErrorResponse(res, err));
 });
 
 export default router;
