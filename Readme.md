@@ -19,11 +19,11 @@ Environment Management: dotenv
 Node.js (version 16 or higher) A code editor like VS Code.
 
 ## Install the Node.js dependencies:
-npm install
+```npm install```
 
 ## Copy .env file from .env.example:
-cp .env.example .env
+```cp .env.example .env```
 Update the values in the `.env` file
 
 ## Start the Server
-npm start
+```npm start```
