@@ -9,7 +9,7 @@ Validation: Robust input validation to ensure data integrity.
 Error Handling: Graceful handling of invalid data or missing fields.
 
 ## Tech Stack
-Backend Framework: Node.js, Express.js
+Backend: Node.js, Express.js
 Database: MongoDB (local or MongoDB Atlas)
 ORM: Mongoose
 Authentication: JSON Web Tokens (JWT)
@@ -21,14 +21,9 @@ Node.js (version 16 or higher) A code editor like VS Code.
 ## Install the Node.js dependencies:
 npm install
 
-Set Up Environment Variables Create a .env file in the root directory and provide the following values:
-
-env
-Copy
-Edit
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+## Copy .env file from .env.example:
+cp .env.example .env
+Update the values in the `.env` file
 
 ## Start the Server
 npm start
