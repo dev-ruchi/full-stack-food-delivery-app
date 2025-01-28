@@ -28,7 +28,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.listen(port, host, () => {
-  console.log(`Listening on port ${port}`);
+  console.log(`Listening on ${host}:${port}`);
 });
 
 app.use("/auth", authRouter);
