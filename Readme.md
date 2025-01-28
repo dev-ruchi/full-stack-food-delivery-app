@@ -15,6 +15,17 @@ ORM: Mongoose
 Authentication: JSON Web Tokens (JWT)
 Environment Management: dotenv 
 
+## Routes
+- POST /auth/signup
+- POST /auth/login
+- POST /menu 
+- GET /menu 
+- GET /menu/id
+- PUT /menu/id
+- DELETE /menu/id
+- POST /order
+- GET /order
+
 ## Prerequisites
 Node.js (version 16 or higher) A code editor like VS Code.
 
