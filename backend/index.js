@@ -31,6 +31,10 @@ app.listen(port, host, () => {
   console.log(`Listening on ${host}:${port}`);
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the food delivery API"); 
+});
+
 app.use("/auth", authRouter);
 app.use("/menu", menuRouter);
 app.use("/order", orderRouter);
