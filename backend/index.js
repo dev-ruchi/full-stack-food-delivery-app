@@ -10,6 +10,7 @@ import menuRouter from "./routes/menus.js";
 import orderRouter from "./routes/orders.js";
 
 const port = process.env.PORT;
+const host = process.env.HOST;
 
 (async () => {
   try {
@@ -26,7 +27,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`Listening on port ${port}`);
 });
 
